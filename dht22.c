@@ -101,6 +101,7 @@ static int read_dht22_dat()
 int main (int argc, char *argv[])
 {
   int lockfd;
+  int maxError = 10;
 
   if (argc != 2)
     printf ("usage: %s <pin>\ndescription: pin is the wiringPi pin number\nusing 7 (GPIO 4)\n",argv[0]);
@@ -121,9 +122,10 @@ int main (int argc, char *argv[])
     exit(EXIT_FAILURE);
   }
 
-  while (read_dht22_dat() == 0) 
+  while (read_dht22_dat() == 0 && maxError > 0) 
   {
      delay(1000); // wait 1sec to refresh
+     maxError--;
   }
 
   delay(1500);
