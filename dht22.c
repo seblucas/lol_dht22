@@ -124,7 +124,7 @@ int main (int argc, char *argv[])
 
   while (read_dht22_dat() == 0 && maxError > 0) 
   {
-     delay(1000); // wait 1sec to refresh
+     delay(2000); // wait 2sec to refresh
      maxError--;
   }
 
