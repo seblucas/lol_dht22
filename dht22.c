@@ -131,5 +131,10 @@ int main (int argc, char *argv[])
   delay(1500);
   close_lockfile(lockfd);
 
+  if (maxError == 0)
+  {
+    exit(EXIT_FAILURE);
+  }
+
   return 0 ;
 }
