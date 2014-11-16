@@ -87,6 +87,12 @@ static int read_dht22_dat()
         t /= 10.0;
         if ((dht22_dat[2] & 0x80) != 0)  t *= -1;
 
+    if (t < -40 || t > 80 ||
+        h < 0   || h > 100)
+    {
+      printf("Data not within operating range, skip\n");
+      return 0;
+    }
 
     printf("Humidity = %.2f %% Temperature = %.2f *C \n", h, t );
     return 1;
