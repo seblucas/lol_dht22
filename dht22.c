@@ -87,6 +87,10 @@ static int read_dht22_dat()
         t /= 10.0;
         if ((dht22_dat[2] & 0x80) != 0)  t *= -1;
 
+    /*
+     * The operating range comes from 
+     * https://www.sparkfun.com/datasheets/Sensors/Temperature/DHT22.pdf
+     */
     if (t < -40 || t > 80 ||
         h < 0   || h > 100)
     {
